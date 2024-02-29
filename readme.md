@@ -5,9 +5,34 @@ As it is built on top of react React.JS, Prior knowledge of React and javascript
 
 ### This repo contains some basic projects i've built while learning React Native
 
-- FlatList, Cards and flex layout in React Native
-- Currency Converter
-- Roll a Dice
-- TicTacToe
-- Music Player
-- Random text generator (Password Generator)
+ <hr>
+
+ **FlatList, Cards and flex layout in React Native**
+
+  ![FlatList Cards](https://raw.githubusercontent.com/Sanket-Gawande/React_Native/main/screenshots/FlatlistCard.png)
+ <hr>
+
+**Currency Converter**
+
+![Currency Converter](https://raw.githubusercontent.com/Sanket-Gawande/React_Native/main/screenshots/CurrencyConverter.png)
+ <hr>
+
+**Roll a Dice**
+
+  ![Currency Converter](https://raw.githubusercontent.com/Sanket-Gawande/React_Native/main/screenshots/RollADice.png)
+ <hr>
+
+**TicTacToe**
+
+![Currency Converter](https://raw.githubusercontent.com/Sanket-Gawande/React_Native/main/screenshots/TicTacToe.png)
+ <hr>
+
+**Random text generator (Password Generator)**
+
+![Currency Converter](https://raw.githubusercontent.com/Sanket-Gawande/React_Native/main/screenshots/PasswordGenerator.png)
+
+ <hr>
+
+**Music Player**
+
+![Currency Converter](https://raw.githubusercontent.com/Sanket-Gawande/React_Native/main/screenshots/MusicPlayer.png)
