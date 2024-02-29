@@ -10,7 +10,7 @@ const Card = () => {
         <Image style={styles.cardImage} source={{uri: item.image}} />
         <View style={styles.content}>
           <Text style={styles.cardTittle}>{item.name}</Text>
-          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.cardText}>
+          <Text numberOfLines={2} ellipsizeMode="tail" style={[styles.cardText, {color:"#fff"}]}>
             {item.desc}
           </Text>
         </View>
