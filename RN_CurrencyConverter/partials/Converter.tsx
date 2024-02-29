@@ -1,4 +1,5 @@
 import {
+  FlatList,
   StatusBar,
   StyleSheet,
   Text,
@@ -6,12 +7,25 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
-import {countries} from './constant';
-
+import React, {useCallback, useState} from 'react';
+import {ICountry, countries} from './constant';
+import Snackbar from 'react-native-snackbar';
 const Converter = () => {
   const [input, setInput] = useState('');
   const [result, setResult] = useState('');
+
+  const calculateResult = useCallback(
+    (c: ICountry) => {
+      if (!+input) {
+        return Snackbar.show({
+          text: 'Please enter valid number to convert.',
+          duration: Snackbar.LENGTH_SHORT,
+        });
+      }
+      setResult(`${c.currency}${(+input * c.rate).toFixed(2)}`);
+    },
+    [input],
+  );
   return (
     <View style={styles.container}>
       <StatusBar barStyle={'dark-content'} backgroundColor={'#eee'} />
@@ -21,24 +35,26 @@ const Converter = () => {
         keyboardType="numeric"
         value={input}
         onChangeText={t => setInput(t)}
+        clearButtonMode="always"
       />
       <View style={styles.main}>
         <Text style={[styles.text, styles.title]}>Countries</Text>
-        <View style={styles.countriesGrid}>
-          {countries.map(c => (
+        <FlatList
+          data={countries}
+          numColumns={3}
+          keyExtractor={c => c.flag}
+          renderItem={({item: c}) => (
             <TouchableOpacity
-              onPress={() => {
-                setResult(`${c.currency}${(+input * c.rate).toFixed(2)}`);
-              }}
+              onPress={() => calculateResult(c)}
               key={c.country}
               style={styles.country}>
               <Text style={styles.flag}>{c.flag}</Text>
               <Text style={[styles.text, styles.center]}>{c.country}</Text>
             </TouchableOpacity>
-          ))}
-        </View>
+          )}
+        />
       </View>
-      {!!input && (
+      {!!+input && (
         <Text style={[styles.text, styles.title, styles.result]}>{result}</Text>
       )}
     </View>
@@ -63,15 +79,15 @@ const styles = StyleSheet.create({
     borderColor: '#ddd',
     color: '#666',
     borderRadius: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 12,
+    paddingHorizontal: 12,
     width: '100%',
     fontSize: 18,
     backgroundColor: '#fff',
     fontWeight: '600',
+    marginTop: 20,
   },
   center: {textAlign: 'center'},
-  result: {textAlign: 'center', marginTop: 'auto'},
+  result: {textAlign: 'center', marginTop: 'auto', marginBottom: 20},
   main: {gap: 8},
   countriesGrid: {
     flexDirection: 'row',
@@ -85,6 +101,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     gap: 4,
     backgroundColor: '#fff',
-    width: '30%',
+    flex: 1,
+    margin: 6,
   },
 });

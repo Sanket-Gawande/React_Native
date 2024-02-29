@@ -10,3 +10,9 @@ export const countries = [
   {country: 'France', currency: '€', rate: 0.87 / 73.66, flag: '🇫🇷'},
   {country: 'Italy', currency: '€', rate: 0.87 / 73.66, flag: '🇮🇹'},
 ];
+export interface ICountry {
+  country: string;
+  currency: string;
+  rate: number;
+  flag: string;
+}
